@@ -1,1 +1,2 @@
 C:\Users\gvern\Documents\Games Projects\Parsing-and-basic-Computer-Theory-Practise\Computer Theory Practice\x64\Debug\Computer Theory Practice.exe
+C:\Users\gvern\Documents\Games Projects\Parsing-and-basic-Computer-Theory-Practise\x64\Debug\Computer Theory Practice.exe

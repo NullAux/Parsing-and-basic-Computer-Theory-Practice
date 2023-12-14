@@ -271,6 +271,37 @@ std::string ADDER(std::string input)
 //Encode a TM (program) into a string
 //This works by translating each row of instructions into a standard format (code word language, CWL), which can be concatonated and later decoded
 //See Cohen 1997:545
+std::string EncodeTM(std::vector<TMRow> program)
+{
+	std::string output;
+
+	for (TMRow instruction : program)
+	{
+		//Add 'from' and 'to', in the form of unary numbers (a's) ended by b's
+		output.append(instruction.from, 'a');
+		output.append("b", 1);
+		output.append(instruction.to, 'a');
+		output.append("b", 1);
+
+		//Add 'read' and 'write'
+		//Each are given a 2 character code - a = aa, b = ab, blank (#) = ba
+		if (instruction.read == 'a') { output.append("aa", 1); }
+		else if (instruction.read == 'b') { output.append("ab", 1); }
+		else if (instruction.read == '#') { output.append("ba", 1); }
+
+		if (instruction.write == 'a') { output.append("aa", 1); }
+		else if (instruction.write == 'b') { output.append("ab", 1); }
+		else if (instruction.write == '#') { output.append("ba", 1); }
+
+		//Add 'move'
+		//L becomes a, R becomes b
+		if (instruction.move == 'L') { output.append("a", 1); }
+		if (instruction.move == 'R') { output.append("b", 1); }
+
+	}
+
+	return output;
+}
 
 
 
@@ -285,6 +316,8 @@ int main()
 	//ADDER with an invalid string
 	std::cout << ADDER(std::string("abaabaa")) << std::endl;
 
-
+	//EncodeTM, using the example Cohen gives (Cohen 1997:546)
+	std::vector<TMRow> exampleToEncode = { TMRow(6,2,'b','a','L') };
+	std::cout << "Encoded TM: " << EncodeTM(exampleToEncode) << std::endl;
 
 }

@@ -320,4 +320,6 @@ int main()
 	std::vector<TMRow> exampleToEncode = { TMRow(6,2,'b','a','L') };
 	std::cout << "Encoded TM: " << EncodeTM(exampleToEncode) << std::endl;
 
+	//Can revisit - create a decode TM function (desc by Cohen on p 547/548), a TM that makes use of this to accept another
+	//TM in CWL and an input string to run the input on said TM
 }
